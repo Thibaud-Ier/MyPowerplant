@@ -74,13 +74,26 @@ namespace DomainTests.Entities
         }
 
         [Fact]
-        public void GivenFuelWithoutWindturbineWhenGetEffectiveMaximumPowerShouldReturnTheMinimumPower()
+        public void GivenFuelWithoutWindturbineWhenGetEffectiveMaximumPowerShouldReturnTheMaximumPower()
         {
             var powerPlant = new Turbojet("MyTurbojet", new Rate(0.6), new PositiveIntValue(100), new PositiveIntValue(200));
 
             var result = powerPlant.GetEffectiveMaximumPower(new Kerosine(new PositiveDoubleValue(20)));
 
             Assert.Equal(200, result);
+        }
+
+        [Theory]
+        [InlineData(0.125, 10, 80)]
+        [InlineData(0.5, 10, 20)]
+        [InlineData(1, 20, 20)]
+        public void GivenFuelWithoutWindturbineWhenGetCostByMegaWattOfFuelShouldReturnTheRightPrice(double efficiency, double price, double expected)
+        {
+            var powerPlant = new Turbojet("MyTurbojet", new Rate(efficiency), new PositiveIntValue(100), new PositiveIntValue(200));
+
+            var result = powerPlant.GetCostByMegaWattOfFuel(new Kerosine(new PositiveDoubleValue(price)));
+
+            Assert.Equal(expected, result);
         }
     }
 }

@@ -34,18 +34,29 @@ namespace Domain.Entities
 
         public virtual double GetEffectiveMinimumPower(Fuel fuel)
         {
-            if (TypeFuel != fuel.GetType())
-                throw new InvalidOperationException();
+            AssertRightFuel(fuel);
 
             return MinimumPower.Value;
         }
 
         public virtual double GetEffectiveMaximumPower(Fuel fuel)
         {
-            if (TypeFuel != fuel.GetType())
-                throw new InvalidOperationException();
+            AssertRightFuel(fuel);
 
             return MaximumPower.Value;
+        }
+
+        public virtual double GetCostByMegaWattOfFuel(Fuel fuel)
+        {
+            AssertRightFuel(fuel);
+
+            return fuel.Value.Value / Efficiency.Value;
+        }
+
+        private void AssertRightFuel(Fuel fuel)
+        {
+            if (TypeFuel != fuel.GetType())
+                throw new InvalidOperationException();
         }
     }
 }
