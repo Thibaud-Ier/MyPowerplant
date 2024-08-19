@@ -22,7 +22,6 @@
 
   <ItemGroup>
     <Folder Include="DomainServices\" />
-    <Folder Include="Entities\" />
   </ItemGroup>
 
   <ItemGroup>
