@@ -70,7 +70,7 @@ namespace Domain.DomainServices
                 }
             }
 
-            return result;
+            return Math.Round(result, 6);
         }
     }
 }
