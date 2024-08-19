@@ -1,4 +1,6 @@
-﻿using Domain.ValueObjects;
+﻿using Domain.DomainServices;
+using Domain.Entities;
+using Domain.ValueObjects;
 using Domain.ValueObjects.Fuels;
 
 namespace DomainTests.DomainServices
@@ -11,65 +13,31 @@ namespace DomainTests.DomainServices
             var load = new Load(new PositiveIntValue(910));
             var fuels = new List<Fuel>() 
             {
-                new Gas(new PositiveDoubleValue(13.4))
+                new Gas(new PositiveDoubleValue(13.4)),
+                new Kerosine(new PositiveDoubleValue(50.8)),
+                new CO2(new PositiveDoubleValue(20)),
+                new Wind(new Percent(60))
             };
 
-//            {
-//                "load": 910,
+            var powerplants = new List<PowerPlant>()
+            {
+                new Gasfired("gasfiredbig1", new Rate(0.53), new PositiveIntValue(100), new PositiveIntValue(460)),
+                new Gasfired("gasfiredbig2", new Rate(0.53), new PositiveIntValue(100), new PositiveIntValue(460)),
+                new Gasfired("gasfiredsomewhatsmaller", new Rate(0.37), new PositiveIntValue(40), new PositiveIntValue(210)),
+                new Turbojet("tj1", new Rate(0.3), new PositiveIntValue(0), new PositiveIntValue(16)),
+                new Windturbine("windpark1", new PositiveIntValue(0), new PositiveIntValue(150)),
+                new Windturbine("windpark2", new PositiveIntValue(0), new PositiveIntValue(36)),
+            };
+            var powerPlantService = new PowerPlantService(load, fuels, powerplants);
 
-//  "fuels":
-//  {
-//                    "gas(euro/MWh)": 13.4,
-//    "kerosine(euro/MWh)": 50.8,
-//    "co2(euro/ton)": 20,
-//    "wind(%)": 60
-//  },
+            var result = powerPlantService.GetMeritOrder();
 
-//  "powerplants": [
-//    {
-//                    "name": "gasfiredbig1",
-//      "type": "gasfired",
-//      "efficiency": 0.53,
-//      "pmin": 100,
-//      "pmax": 460
-//    },
-//    {
-//                    "name": "gasfiredbig2",
-//      "type": "gasfired",
-//      "efficiency": 0.53,
-//      "pmin": 100,
-//      "pmax": 460
-//    },
-//    {
-//                    "name": "gasfiredsomewhatsmaller",
-//      "type": "gasfired",
-//      "efficiency": 0.37,
-//      "pmin": 40,
-//      "pmax": 210
-//    },
-//    {
-//                    "name": "tj1",
-//      "type": "turbojet",
-//      "efficiency": 0.3,
-//      "pmin": 0,
-//      "pmax": 16
-//    },
-//    {
-//                    "name": "windpark1",
-//      "type": "windturbine",
-//      "efficiency": 1,
-//      "pmin": 0,
-//      "pmax": 150
-//    },
-//    {
-//                    "name": "windpark2",
-//      "type": "windturbine",
-//      "efficiency": 1,
-//      "pmin": 0,
-//      "pmax": 36
-//    }
-//  ]
-//}
+            Assert.Equal(90.0, result["windpark1"]);
+            Assert.Equal(21.6, result["windpark2"]);
+            Assert.Equal(460.0, result["gasfiredbig1"]);
+            Assert.Equal(338.4, result["gasfiredbig2"]);
+            Assert.Equal(0.0, result["gasfiredsomewhatsmaller"]);
+            Assert.Equal(0, result["tj1"]);
         }
 
     }
