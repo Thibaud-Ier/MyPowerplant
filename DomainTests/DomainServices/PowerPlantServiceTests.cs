@@ -32,12 +32,12 @@ namespace DomainTests.DomainServices
 
             var result = powerPlantService.GetMeritOrder();
 
-            Assert.Equal(90.0, result["windpark1"]);
-            Assert.Equal(21.6, result["windpark2"]);
-            Assert.Equal(460.0, result["gasfiredbig1"]);
-            Assert.Equal(338.4, result["gasfiredbig2"]);
-            Assert.Equal(0.0, result["gasfiredsomewhatsmaller"]);
-            Assert.Equal(0, result["tj1"]);
+            Assert.Equal(90.0, result["windpark1"], 0.000001);
+            Assert.Equal(21.6, result["windpark2"], 0.000001);
+            Assert.Equal(460.0, result["gasfiredbig1"], 0.000001);
+            Assert.Equal(338.4, result["gasfiredbig2"], 0.000001);
+            Assert.Equal(0.0, result["gasfiredsomewhatsmaller"], 0.000001);
+            Assert.Equal(0, result["tj1"], 0.000001);
         }
 
     }

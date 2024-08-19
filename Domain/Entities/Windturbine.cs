@@ -13,5 +13,10 @@ namespace Domain.Entities
 
         public override double GetEffectiveMaximumPower(Fuel fuel)
             => base.GetEffectiveMaximumPower(fuel) * fuel.Value.Value;
+
+        public override double GetCostByMegaWattOfFuel(Fuel fuel)
+        {
+            return base.GetCostByMegaWattOfFuel(fuel) * 0;
+        }
     }
 }
