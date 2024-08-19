@@ -23,7 +23,6 @@
   <ItemGroup>
     <Folder Include="DomainServices\" />
     <Folder Include="Entities\" />
-    <Folder Include="ValueObjects\Fuels\" />
   </ItemGroup>
 
   <ItemGroup>
