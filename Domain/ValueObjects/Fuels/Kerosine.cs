@@ -1,6 +1,6 @@
 ﻿namespace Domain.ValueObjects.Fuels
 {
-    public class Kerosine : Fuel
+    public class Kerosine
     {
     }
 }

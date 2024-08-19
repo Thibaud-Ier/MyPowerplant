@@ -1,15 +1,10 @@
-﻿using Domain.ValueObjects;
-using Domain.ValueObjects.Fuels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.ValueObjects.Fuels;
 
 namespace DomainTests.ValueObjects.Fuels
 {
     public class GasTests
     {
+        [Fact]
         public void GivenNegativeValueWhenInitGasThenRaiseException()
         {
             Assert.Throws<InvalidOperationException>(() => new Gas(-8));
