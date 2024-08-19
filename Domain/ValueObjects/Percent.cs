@@ -6,7 +6,7 @@ namespace Domain.ValueObjects
     {
         public int Value { get; }
 
-        public double Rate { get; }
+        public Rate Rate { get; }
 
         public Percent(int value)
         {
@@ -14,7 +14,7 @@ namespace Domain.ValueObjects
                 throw new InvalidOperationException();
 
             Value = value;
-            Rate = (double)value / 100.0;
+            Rate = new Rate((double)value / 100.0);
         }
 
         protected override IEnumerable<object> GetEqualityComponents()

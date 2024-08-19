@@ -26,7 +26,7 @@ namespace DomainTests.ValueObjects
             var percent = new Percent(value);
 
             Assert.Equal(value, percent.Value);
-            Assert.Equal(value / 100.0, percent.Rate);
+            Assert.Equal(value / 100.0, percent.Rate.Value);
         }
     }
 }
