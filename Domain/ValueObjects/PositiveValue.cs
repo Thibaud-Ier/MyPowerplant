@@ -18,5 +18,25 @@ namespace Domain.ValueObjects
         {
             yield return Value;
         }
+
+        public static bool operator >(PositiveValue a, PositiveValue b)
+        {
+            return a.Value > b.Value;
+        }
+
+        public static bool operator <(PositiveValue a, PositiveValue b)
+        {
+            return a.Value < b.Value;
+        }
+
+        public static bool operator >=(PositiveValue a, PositiveValue b)
+        {
+            return a.Value >= b.Value;
+        }
+
+        public static bool operator <=(PositiveValue a, PositiveValue b)
+        {
+            return a.Value <= b.Value;
+        }
     }
 }

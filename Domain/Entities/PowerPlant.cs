@@ -20,8 +20,13 @@ namespace Domain.Entities
             if (string.IsNullOrWhiteSpace(name))
                 throw new InvalidOperationException(nameof(name));
                 
+            if (minimumPower > maximumPower)
+                throw new InvalidOperationException(nameof(name));
+
             Name = name;
             Efficiency = efficiency;
+            MinimumPower = minimumPower;
+            MaximumPower = maximumPower;
         }
 
         //        type: gasfired, turbojet or windturbine.
