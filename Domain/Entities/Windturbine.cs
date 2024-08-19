@@ -7,5 +7,11 @@ namespace Domain.Entities
         : PowerPlant(name, new Rate(1), minimumPower, maximumPower)
     {
         public override Type TypeFuel => typeof(Wind);
+
+        public override double GetEffectiveMinimumPower(Fuel fuel)
+            => base.GetEffectiveMaximumPower(fuel) * fuel.Value.Value;
+
+        public override double GetEffectiveMaximumPower(Fuel fuel)
+            => base.GetEffectiveMaximumPower(fuel) * fuel.Value.Value;
     }
 }
