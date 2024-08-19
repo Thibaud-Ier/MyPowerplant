@@ -21,7 +21,7 @@ namespace DomainTests.ValueObjects
         [InlineData(10)]
         [InlineData(50)]
         [InlineData(100)]
-        public void GivenAParameterBetwween0and100WhenInitPercentThenValueShouldBeEqualToTheParameterAndTheRateShouldBeRight(int value)
+        public void GivenAParameterBetween0and100WhenInitPercentThenValueShouldBeEqualToTheParameterAndTheRateShouldBeRight(int value)
         {
             var percent = new Percent(value);
 

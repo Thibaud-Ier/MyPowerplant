@@ -18,10 +18,10 @@ namespace DomainTests.ValueObjects
 
         [Theory]
         [InlineData(0)]
-        [InlineData(10)]
-        [InlineData(50)]
-        [InlineData(100)]
-        public void GivenAParameterBetwween0and1WhenInitRateThenValueShouldBeEqualToTheParameter(int value)
+        [InlineData(0.1)]
+        [InlineData(0.5)]
+        [InlineData(1)]
+        public void GivenAParameterBetween0and1WhenInitRateThenValueShouldBeEqualToTheParameter(int value)
         {
             var rate = new Rate(value);
 
