@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-
-namespace Domain.ValueObjects.Fuels
+﻿namespace Domain.ValueObjects.Fuels
 {
     public class Gas(PositiveValue value) : Fuel
     {
