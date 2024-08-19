@@ -11,14 +11,14 @@ namespace DomainTests.Entities
         [InlineData("   ")]
         public void GivenBadStringValueWhenInitPowerPlantShouldRaiseAnException(string value)
         {
-            Assert.Throws<InvalidOperationException>(() => new Gasfired(value, new Rate(0.5), new PositiveValue(50), new PositiveValue(100)));
+            Assert.Throws<InvalidOperationException>(() => new Gasfired(value, new Rate(0.5), new PositiveIntValue(50), new PositiveIntValue(100)));
         }
 
         [Fact]
         public void GivenMinimumPowerSuperiorThanMaximumPowerWhenInitPowerPlantShouldRaiseAnException()
         {
             Assert.Throws<InvalidOperationException>(() 
-                => new Gasfired("Tricastin", new Rate(0.5), new PositiveValue(50), new PositiveValue(45)));
+                => new Gasfired("Tricastin", new Rate(0.5), new PositiveIntValue(50), new PositiveIntValue(45)));
         }
 
         [Theory]
@@ -28,7 +28,7 @@ namespace DomainTests.Entities
         public void GivenRightArgumentWhenInitPowerPlantShouldBuildCorrectlyThePowerPlant(string name,
             double efficiency, int minimum, int maximum)
         {
-            var powerPlant = new Gasfired(name, new Rate(efficiency), new PositiveValue(minimum), new PositiveValue(maximum));
+            var powerPlant = new Gasfired(name, new Rate(efficiency), new PositiveIntValue(minimum), new PositiveIntValue(maximum));
 
             Assert.Equal(name, powerPlant.Name);
             Assert.Equal(efficiency, powerPlant.Efficiency.Value);

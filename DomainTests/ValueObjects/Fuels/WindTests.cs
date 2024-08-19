@@ -15,7 +15,7 @@ namespace DomainTests.ValueObjects.Fuels
 
             var wind = new Wind(percent);
 
-            Assert.Equal(wind.Value, percent.Rate.Value);
+            Assert.Equal(wind.Value, new PositiveDoubleValue(percent.Rate.Value));
             Assert.Equal(wind.Percent, percent);
         }
     }

@@ -13,11 +13,11 @@ namespace Domain.Entities
 
         public Rate Efficiency { get; }
 
-        public PositiveValue MinimumPower { get; }
+        public PositiveIntValue MinimumPower { get; }
 
-        public PositiveValue MaximumPower { get; }
+        public PositiveIntValue MaximumPower { get; }
 
-        public PowerPlant(string name, Rate efficiency, PositiveValue minimumPower, PositiveValue maximumPower)
+        public PowerPlant(string name, Rate efficiency, PositiveIntValue minimumPower, PositiveIntValue maximumPower)
         {
             if (string.IsNullOrWhiteSpace(name))
                 throw new InvalidOperationException(nameof(name));

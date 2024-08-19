@@ -4,7 +4,7 @@
     {
         public override string Name => "Wind";
 
-        public override double Value { get; } = value.Rate.Value;
+        public override PositiveDoubleValue Value { get; } = new PositiveDoubleValue(value.Rate.Value);
 
         public Percent Percent { get; } = value;
     }

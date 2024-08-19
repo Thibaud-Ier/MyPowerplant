@@ -2,11 +2,11 @@
 
 namespace Domain.ValueObjects
 {
-    public class PositiveValue : ValueObject<PositiveValue>
+    public class PositiveDoubleValue : ValueObject<PositiveDoubleValue>
     {
-        public int Value { get; }
+        public double Value { get; }
 
-        public PositiveValue(int value)
+        public PositiveDoubleValue(double value)
         {
             if (value < 0)
                 throw new InvalidOperationException();
@@ -19,22 +19,22 @@ namespace Domain.ValueObjects
             yield return Value;
         }
 
-        public static bool operator >(PositiveValue a, PositiveValue b)
+        public static bool operator >(PositiveDoubleValue a, PositiveDoubleValue b)
         {
             return a.Value > b.Value;
         }
 
-        public static bool operator <(PositiveValue a, PositiveValue b)
+        public static bool operator <(PositiveDoubleValue a, PositiveDoubleValue b)
         {
             return a.Value < b.Value;
         }
 
-        public static bool operator >=(PositiveValue a, PositiveValue b)
+        public static bool operator >=(PositiveDoubleValue a, PositiveDoubleValue b)
         {
             return a.Value >= b.Value;
         }
 
-        public static bool operator <=(PositiveValue a, PositiveValue b)
+        public static bool operator <=(PositiveDoubleValue a, PositiveDoubleValue b)
         {
             return a.Value <= b.Value;
         }

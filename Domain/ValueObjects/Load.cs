@@ -2,9 +2,9 @@
 
 namespace Domain.ValueObjects
 {
-    public class Load(PositiveValue value) : ValueObject<Load>
+    public class Load(PositiveIntValue value) : ValueObject<Load>
     {
-        public PositiveValue Value { get; } = value;
+        public PositiveIntValue Value { get; } = value;
 
         protected override IEnumerable<object> GetEqualityComponents()
         {

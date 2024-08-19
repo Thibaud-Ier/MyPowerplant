@@ -7,7 +7,7 @@ namespace DomainTests.ValueObjects
         [Fact]
         public void GivenNegativeParameterWhenInitPositiveValueThenRaiseException()
         {
-            Assert.Throws<InvalidOperationException>(() => new PositiveValue(-8));
+            Assert.Throws<InvalidOperationException>(() => new PositiveIntValue(-8));
         }
 
         [Theory]
@@ -16,7 +16,7 @@ namespace DomainTests.ValueObjects
         [InlineData(4242)]
         public void GivenPositiveParameterWhenInitPositiveValueThenValueShouldBeEqualToTheParameter(int value)
         {
-            var positiveValue = new PositiveValue(value);
+            var positiveValue = new PositiveIntValue(value);
 
             Assert.Equal(value, positiveValue.Value);
         }

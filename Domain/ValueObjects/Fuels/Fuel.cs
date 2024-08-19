@@ -6,7 +6,7 @@ namespace Domain.ValueObjects.Fuels
     {
         public abstract string Name { get;}
 
-        public abstract double Value { get; }
+        public abstract PositiveDoubleValue Value { get; }
 
         protected override IEnumerable<object> GetEqualityComponents()
         {

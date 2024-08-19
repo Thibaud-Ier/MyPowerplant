@@ -1,9 +1,9 @@
 ﻿namespace Domain.ValueObjects.Fuels
 {
-    public class Kerosine(PositiveValue value) : Fuel
+    public class Kerosine(PositiveDoubleValue value) : Fuel
     {
         public override string Name => "Kerosine";
 
-        public override double Value { get; } = value.Value;
+        public override PositiveDoubleValue Value { get; } = value;
     }
 }
