@@ -10,7 +10,10 @@ namespace Domain.Entities
 
         public PowerPlant(string name)
         {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new InvalidOperationException(nameof(name));
                 
+            Name = name;    
         }
     }
 }

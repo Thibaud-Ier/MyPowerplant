@@ -12,5 +12,16 @@ namespace DomainTests.Entities
         {
             Assert.Throws<InvalidOperationException>(() => new PowerPlant(value));
         }
+
+        [Theory]
+        [InlineData("Tricastin")]
+        [InlineData("Bollène")]
+        [InlineData("Marcoul")]
+        public void GivenRightArgumentWhenInitPowerPlantShouldBuildCorrectlyThePowerPlant(string value)
+        {
+            var powerPlant = new PowerPlant(value);
+
+            Assert.Equal(value, powerPlant.Name);
+        }
     }
 }
