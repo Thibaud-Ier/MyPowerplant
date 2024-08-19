@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <Folder Include="DomainServices\" />
-    <Folder Include="ValueObjects\" />
+    <Folder Include="Entities\" />
   </ItemGroup>
 
   <ItemGroup>

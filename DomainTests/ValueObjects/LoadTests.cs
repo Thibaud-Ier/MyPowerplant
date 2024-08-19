@@ -1,7 +1,6 @@
 ﻿using Domain.ValueObjects;
 
-
-namespace DomainTests.Entities
+namespace DomainTests.ValueObjects
 {
     public class LoadTests
     {
