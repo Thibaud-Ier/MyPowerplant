@@ -7,11 +7,15 @@ namespace Domain.Entities
     {
         public override string Id => Name;
 
-        public string Name { get; private init; }
+        public string Name { get; }
 
-        public Rate Efficiency { get; private init; }
+        public Rate Efficiency { get; }
 
-        public PowerPlant(string name, Rate efficiency)
+        public PositiveValue MinimumPower { get; }
+
+        public PositiveValue MaximumPower { get; }
+
+        public PowerPlant(string name, Rate efficiency, PositiveValue minimumPower, PositiveValue maximumPower)
         {
             if (string.IsNullOrWhiteSpace(name))
                 throw new InvalidOperationException(nameof(name));

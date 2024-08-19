@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class Gasfired(string name, Rate efficiency) : PowerPlant(name, efficiency)
+    public class Gasfired(string name, Rate efficiency, PositiveValue minimum, PositiveValue maximum)
+        : PowerPlant(name, efficiency, minimum, maximum)
     {
         readonly Type TypeFuel = typeof(Gas);
     }
