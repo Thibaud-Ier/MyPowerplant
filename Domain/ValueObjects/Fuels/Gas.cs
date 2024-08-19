@@ -2,18 +2,10 @@
 
 namespace Domain.ValueObjects.Fuels
 {
-    public class Gas : Fuel
+    public class Gas(PositiveValue value) : Fuel
     {
         public override string Name => "Gas";
 
-        public override double Value { get; }
-
-        public Gas(int value)
-        {
-            if (value < 0)
-                throw new InvalidOperationException();
-
-            Value = value;
-        }
+        public override double Value { get; } = value.Value;
     }
 }
