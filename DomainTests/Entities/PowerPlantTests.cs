@@ -10,7 +10,7 @@ namespace DomainTests.Entities
         [InlineData("   ")]
         public void GivenBadStringValueWhenInitPowerPlantShouldRaiseAnException(string value)
         {
-            Assert.Throws<InvalidOperationException>(() => new PowerPlant(value));
+            Assert.Throws<InvalidOperationException>(() => new Gasfired(value));
         }
 
         [Theory]
@@ -19,7 +19,7 @@ namespace DomainTests.Entities
         [InlineData("Marcoul")]
         public void GivenRightArgumentWhenInitPowerPlantShouldBuildCorrectlyThePowerPlant(string value)
         {
-            var powerPlant = new PowerPlant(value);
+            var powerPlant = new Gasfired(value);
 
             Assert.Equal(value, powerPlant.Name);
         }
