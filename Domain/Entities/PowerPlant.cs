@@ -1,5 +1,6 @@
 ﻿using Domain.Common;
 using Domain.ValueObjects;
+using Domain.ValueObjects.Fuels;
 
 namespace Domain.Entities
 {
@@ -29,6 +30,28 @@ namespace Domain.Entities
             Efficiency = efficiency;
             MinimumPower = minimumPower;
             MaximumPower = maximumPower;
+        }
+
+        public double GetEffectiveMinimumPower(Fuel fuel)
+        {
+            if (TypeFuel != fuel.GetType())
+                throw new InvalidOperationException();
+
+            if (fuel is Wind)
+                return MinimumPower.Value * fuel.Value.Value;
+
+            return MinimumPower.Value;
+        }
+
+        public virtual double GetEffectiveMaximumPower(Fuel fuel)
+        {
+            if (TypeFuel != fuel.GetType())
+                throw new InvalidOperationException();
+
+            if (fuel is Wind)
+                return MaximumPower.Value * fuel.Value.Value;
+
+            return MaximumPower.Value;
         }
     }
 }
