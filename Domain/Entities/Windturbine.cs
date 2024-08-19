@@ -9,7 +9,7 @@ namespace Domain.Entities
         public override Type TypeFuel => typeof(Wind);
 
         public override double GetEffectiveMinimumPower(Fuel fuel)
-            => base.GetEffectiveMaximumPower(fuel) * fuel.Value.Value;
+            => base.GetEffectiveMinimumPower(fuel) * fuel.Value.Value;
 
         public override double GetEffectiveMaximumPower(Fuel fuel)
             => base.GetEffectiveMaximumPower(fuel) * fuel.Value.Value;
