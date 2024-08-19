@@ -90,10 +90,27 @@ namespace DomainTests.Entities
         public void GivenFuelWithoutWindturbineWhenGetCostByMegaWattOfFuelShouldReturnTheRightPrice(double efficiency, double price, double expected)
         {
             var powerPlant = new Turbojet("MyTurbojet", new Rate(efficiency), new PositiveIntValue(100), new PositiveIntValue(200));
+            var kerosine = new Kerosine(new PositiveDoubleValue(price));
+            var co2 = new CO2(new PositiveDoubleValue(50));
 
-            var result = powerPlant.GetCostByMegaWattOfFuel(new Kerosine(new PositiveDoubleValue(price)));
+            var result = powerPlant.GetCostByMegaWattOfFuel(kerosine, co2);
 
             Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData(0.125, 10, 6, 81.8)]
+        [InlineData(0.5, 10, 12, 23.6)]
+        [InlineData(1, 20, 18, 25.4)]
+        public void GivenFuelWithGasfiredWhenGetCostByMegaWattOfFuelShouldReturnTheRightPriceWithCO2(double efficiency, double priceGas, double priceC02, double expected)
+        {
+            var powerPlant = new Gasfired("MyGas", new Rate(efficiency), new PositiveIntValue(100), new PositiveIntValue(200));
+            var gas = new Gas(new PositiveDoubleValue(priceGas));
+            var co2 = new CO2(new PositiveDoubleValue(priceC02));
+
+            var result = powerPlant.GetCostByMegaWattOfFuel(gas, co2);
+
+            Assert.Equal(expected, result, 0.000001);
         }
     }
 }

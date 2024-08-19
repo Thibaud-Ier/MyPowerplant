@@ -46,7 +46,7 @@ namespace Domain.Entities
             return MaximumPower.Value;
         }
 
-        public virtual double GetCostByMegaWattOfFuel(Fuel fuel)
+        public virtual double GetCostByMegaWattOfFuel(Fuel fuel, CO2 co2)
         {
             AssertRightFuel(fuel);
 

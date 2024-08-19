@@ -14,9 +14,8 @@ namespace Domain.DomainServices
         public readonly Dictionary<string, PowerPlant> _powerPlants = powerPlants.ToDictionary(x => x.Id);
 
         public IDictionary<string, double> GetMeritOrder()
-        {
-            
-            var orderCost = _powerPlants.OrderBy(x => x.Value.GetCostByMegaWattOfFuel(_fuels[x.Value.TypeFuel.Name]))
+        {           
+            var orderCost = _powerPlants.OrderBy(x => x.Value.GetCostByMegaWattOfFuel(_fuels[x.Value.TypeFuel.Name], GetC02Fuel()))
                 .ThenByDescending(x => x.Value.GetEffectiveMaximumPower(_fuels[x.Value.TypeFuel.Name]))
                 .ThenBy(x => x.Value.GetEffectiveMinimumPower(_fuels[x.Value.TypeFuel.Name]))
                 .Select(x => x.Key)
@@ -26,6 +25,11 @@ namespace Domain.DomainServices
             MeridOrderLoop(orderCost, result);
 
             return result;
+        }
+
+        private CO2 GetC02Fuel()
+        {
+            return (CO2)_fuels["CO2"];
         }
 
         private void MeridOrderLoop(List<string> orderCost, Dictionary<string, double> result)
